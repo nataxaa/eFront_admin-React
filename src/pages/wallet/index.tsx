@@ -1,4 +1,9 @@
+import PieChart from "../../components/Dought";
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
 import  {Table}  from "../../components/Table";
+import  FormatValue  from "../../utils/FormatValue";
+import { AddArea } from "./components/AddArea";
 import { Container } from "./styles";
 
 export function Wallet(){
@@ -9,32 +14,50 @@ export function Wallet(){
         // Adicione mais objetos conforme necessário
       ];
 
+    const new_transactions = transacoes.map(props=>({
+        ...props,
+        formatValue: FormatValue(props.Valor)
+
+    }))
+
     return(
         <Container>
-            {/**
-             * 
+            <Header 
+              title="Carteira"
+              subtitle="Olhe suas receitas aqui."
+            />
+            <div style={{display:'grid', gridTemplateColumns:"1fr 3fr", gap:'10px'}}>
+                <PieChart/>
+                <AddArea/>
+            </div>
             <Table
+                title="Transações"
                 columns={[
                     {
-                        name:'Receita'
+                        header:'Receita',
+                        acessor: 'Receita'
                     },
                     {
-                        name:'Data'
+                        header:'Data',
+                        acessor: 'Data'
                     },
                     {
-                        name:'Valor'
+                        header:'Valor',
+                        acessor: 'formatValue'
                     },
                     {
-                        name:'Categoria'
+                        header:'Categoria',
+                        acessor: 'Categoria'
                     },
                     {
-                        name:'Situação'
+                        header:'Situação',
+                        acessor: 'Situacao'
                     },
                 ]}
-                datas={transacoes}
+                datas={new_transactions}
             
             />
-                    */}
+            <Footer/>
         </Container>
     )
 }

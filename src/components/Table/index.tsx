@@ -1,3 +1,4 @@
+import { Input } from "../TextInput/styles";
 import { Container, TableMain } from "./styles";
 
 
@@ -9,13 +10,14 @@ interface Columns{
 interface TableProps{
   columns: Columns[] 
   datas: any[]
+  title:string;
 }
 
-export function Table({columns, datas}:TableProps){
+export function Table({columns, datas, title}:TableProps){
 
     
 
-function LinhaTabela({ line, acessor }:any) {
+function LinhaTabela() {
   return (
     <>
       {datas.map((linha, index) => (
@@ -51,7 +53,11 @@ function Tabela() {
 
     return(
         <Container>
-            <h1>Histórico de compradores</h1>
+          <div className="header-table">
+            <h1>{title}</h1>
+
+            <Input placeholder="Busque a receita..."/>
+          </div>
             <Tabela />
         </Container>
     )

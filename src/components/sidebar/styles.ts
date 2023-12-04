@@ -7,12 +7,17 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 50px 15px;
+    background-color: #FFFFFF;
     h2{
         margin-bottom: 40px;
         font-size: 25px;
         span{
             color: #9E6EFE;
         }
+    }
+    .links{
+        color:#000000;
+        text-decoration: none;  
     }
 
 `

@@ -5,16 +5,25 @@ import { LuShoppingCart } from "react-icons/lu";
 import { HiUsers } from "react-icons/hi";
 import { BsGear } from "react-icons/bs";
 import { FaPowerOff } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 export function Sidebar(){
     return (
         <Container>
             <h2><span>e</span>Front</h2>
             <ListPages>
-                <p><RxDashboard/> DASHBOARD</p>
-                <p><IoWalletOutline/> CARTEIRA</p>
-                <p><LuShoppingCart/> TRANSAÇÕES</p>
-                <p><HiUsers/> SUPORTE</p>
+                <Link className="links" to={'/'}>
+                    <p><RxDashboard/> DASHBOARD</p>
+                </Link>
+                <Link className="links" to={'/wallet'}>
+                    <p><IoWalletOutline/> CARTEIRA</p>
+                </Link>
+                <Link className="links" to={'/transaction'}>
+                    <p><LuShoppingCart/> TRANSAÇÕES</p>
+                </Link>
+                <Link className="links" to={'/support'}>
+                    <p><HiUsers/> SUPORTE</p>
+                </Link>
             </ListPages>
             <FooterSideBar>
                 <p><BsGear/> AJUSTES</p>

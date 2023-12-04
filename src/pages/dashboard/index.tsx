@@ -5,6 +5,7 @@ import { CardResume } from "./components/CardsResume";
 import  {Table}  from "../../components/Table";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import FormatValue from "../../utils/FormatValue";
 
 export function Dashboard(){
 
@@ -13,20 +14,11 @@ export function Dashboard(){
     { id: 2, data: "02/01/2023", nome: "Maria", localizacao: "Cidade B", valor: 150.00, situacao: "Inativo" },
     // Adicione mais objetos conforme necessário
   ];
-  const columns = [
-    {
-      header: "Nome",
-      acessor: "nome",
-    },
-    {
-      header: "Idade",
-      acessor: "idade",
-    },
-    {
-      header: "Cidade",
-      acessor: "cidade",
-    },
-  ];
+  
+  const new_datas = dados.map(props=>({
+    ...props,
+    formatValue:FormatValue(props.valor)
+  }))
   
 
     return(
@@ -55,6 +47,7 @@ export function Dashboard(){
             </div>
             <CardResume/>
             <Table
+            title="Histórico de Compradores"
               columns={[
                 {
                   header:'ID',
@@ -74,14 +67,14 @@ export function Dashboard(){
                 },
                 {
                   header:'Valor',
-                  acessor:'valor'
+                  acessor:'formatValue'
                 },
                 {
                   header:'Situação',
                   acessor:'situacao'
                 },
               ]}
-              datas={dados} 
+              datas={new_datas} 
             />
 
             <Footer/>
